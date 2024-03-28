@@ -16,7 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from ninja import NinjaAPI
+
+from hymns.api import router as hymns_router
+
+
+
+api = NinjaAPI(
+    title="Pentecostal Hymns API",
+    version="1.0.0",
+    description="Contains a collection of all Pentecostal Hymns",
+)
+api.add_router("/hymns/", hymns_router)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("api/v1/", api.urls),
 ]
