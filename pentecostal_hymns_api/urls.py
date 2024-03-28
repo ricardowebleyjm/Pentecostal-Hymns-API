@@ -35,7 +35,7 @@ def index_view(request: HttpRequest):
     return HttpResponse(content="<h1>Penecostal Hymns API</h1>")
 
 urlpatterns = [
-    path("", index_view, "index_view"),
+    path("", index_view, name="index_view"),
     path('admin/', admin.site.urls),
     path("api/v1/", api.urls),
 ]
